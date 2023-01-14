@@ -1,0 +1,205 @@
+---
+title: "Follow-up Study"
+subtitle: "Critical Reflection on Comparison of GGM and DCG as Causal Discovery Tools"
+author: "Kyuri Park"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+format: 
+  html:
+    theme: Yeti
+    css: style2.css
+    toc: true
+    # toc-location: left
+    smooth-scroll: true
+    number-sections: true
+    embed-resources: true
+    highlight: tango
+    fig-responsive: true
+    code-block-bg: rgba(233,236,239,.65)
+editor: visual
+bibliography: references.bib
+csl: "apa.csl"
+link-citations: yes
+execute:
+    warning: false
+    message: false
+crossref:
+  fig-title: '**Figure**'
+  fig-labels: <strong>arabic</strong>
+  title-delim: "**.**"
+---
+
+```{r setup, include=FALSE}
+# chunk settings
+knitr::opts_chunk$set(
+   message = FALSE,
+   warning = FALSE,
+   comment = NA,
+   fig.align = "center")
+
+# suppress ggplot warnings
+options(warn = -1) 
+
+## load libraries and functions
+library(qgraph)
+library(pcalg)
+library(qgraph)
+library(ggplot2)
+library(dplyr)
+library(ggpubr)
+library(purrr)
+library(kableExtra)
+
+source("../code/R/CCD_fnc.R")
+source("../code/R/plot_fnc.R")
+source("../code/R/dsep_fnc.R")
+source("../code/R/searchAM_KP_fnc.R")
+source("../code/R/equivset_fnc.R")
+source("../code/R/data_generating_fnc.R")
+source("../code/R/eval_metric_fnc.R")
+source("../code/R/variation_fnc.R")
+```
+
+<hr>
+
+# Summary of Main Analysis 
+
+In the main analysis, we aimed to investigate the utility of statistical network models -- Gaussian graphical model (GGM) -- as tools for causal discovery in *cyclic* settings compared to the *directed cyclic graph* models (DCG) by means of a simulation study. 
+
+We used the *cyclic causal discovery* (CCD) algorithm to estimate DCGs [@richardson1996] and compare them to the Gaussian graphical models (GGM). The comparison is made based on the overall density and degree centrality. As shown in @fig-pag, the output of the CCD algorithm is a PAG (*partial ancestral graph*), which represents the *Markov-equivalent* class of DCGs -- DCGs that are statistically equivalent under the estimated conditional independencies from observational data. Therefore, we computed the *average* density and *average* degree centrality given all the equivalent DCGs per simulated condition and compared those to the density and degree centrality of GGMs and the true model, respectively.
+
+The results showed that the DCGs approximated the true cyclic models better in terms of both density and degree centrality compared to GGMs. GGMs often overestimated the density and correspondingly resulted in high degrees for almost all nodes in the considered models. The conclusion based on these results could be that statistical network models perform poorly as causal discovery tools in cyclic settings and hence, it shall be preferred to use the purpose-built *causal discovery methods* when one is interested in the underlying causal mechanisms.
+
+```{r}
+#| label: fig-pag
+#| echo: false
+#| fig-cap: "***Summary of the CCD algorithm operation.*** Given the estimated statistical independencies from observational data, CCD outputs a partial ancestral graph (PAG). It can be seen that in this example, the PAG represents two different directed cyclic graphs (DCG), of which we compute the density and degree centrality. Then, the average value of density and degree centrality are subsequently used for the comparison with the GGM."
+#| out-width: 100%
+#| fig-dpi: 300
+
+knitr::include_graphics("img/CCDoverallsummary.png")
+```
+
+<hr>
+
+# Reflection on Limitations
+
+However, we cannot just naively draw such conclusion merely based on these results, as there are several limitations in this simulation study. Below, I list two crucial limitations.
+
+
+1.	We did not explicitly account for the *uncertainty* in estimation with the CCD algorithm. As explained above, the algorithm in general cannot uniquely identify one true graph, but instead provides a set of equivalent DCGs (as a form of PAG). The *size* of the equivalent set reflects the level of uncertainty in its estimation, such that the *larger* the set is, the *higher the uncertainty* in estimation. Besides the size, the *variation* in the equivalent set can also imply the instability in estimation; the *higher* the variation, the *more unstable* the estimates are. 
+It is a critical aspect to further investigate, as it could be the case that even when the average density and degree centrality are closely aligned to those of the true model, the *size* of the set or the *variation* in the set is large, indicating the lack of precision in its estimates.
+
+
+2.	There is little evidence on practical applicability of the CCD algorithm, as we only tested it out on rather small simulated models  ($p = 4, 5, 6$) with a very large sample size ($N = 10^6$). The typical psychological data, however, usually consist of much fewer observations while including more variables [@constantin_general_2021]. Thus, whether the CCD algorithm can be applied to such empirical data and utilized in psychological research in practice is yet questionable.
+
+<hr>
+
+# Follow-up Analyses
+In this section, we perform the follow-up analyses to investigate the aforementioned limitations in the original study. 
+To examine the overall uncertainty/instability in estimation as to the first limitation, in @sec-density, we check the size of equivalent class from each of the simulated models and investigate the variation in the density. Additionally, in @sec-degree, we look into the variation in degree centrality per each set of DCGs. Regarding the practical applicability of the CCD algorithm, in @sec-applicability, we test the algorithm on empirical data [@mcnally2017] and check if it produces a reasonable output. 
+
+## Variation in Density of DCGs {#sec-density}
+@fig-densityvariation shows the size of the equivalence class and the distribution of density per set of DCGs from each of the simulated models. First thing that stands out is that the dense models (right column of @fig-densityvariation) seem to have a slightly higher variation in density (i.e., the spread of distributions is wider), and accordingly the discrepancy between the true density and average density of DCGs is larger in the dense models than in the sparse models. This indicates that the CCD algorithm tends to be less stable when the true causal structure is dense and correspondingly, the resulting estimates are more likely to deviate from the true values. 
+
+
+Secondly, it could be seen that the size of equivalence class is overall quite large across all conditions, except for the *sparse model with 4 nodes* case (@fig-densityvariation (a)). There is no specific pattern observed between the size of equivalence class and the types of simulated models, but these fairly large equivalence classes suggest the lack of certainty in its estimation.
+
+
+```{r}
+#| label: fig-densityvariation
+#| echo: false
+#| fig-cap: "*Distribution of density per set of DCGs.* In *(a)*, two DCGs in the equivalence class have the same density that is identical to the true density (the two lines overlap). The dense model with 4 nodes in *(b)* seems to be the most difficult case for CCD, given that it has the largest equivalence class (1,659 DCGs) with the highest discrepancy in density among all considered cases. Typically, the CCD algorithm seems to struggle more to estimate the dense models, seeing that there are more variations and higher deviations from the true values in the dense condition."
+#| fig-dpi: 600
+#| out-width: 90%
+
+knitr::include_graphics("img/densityvariation.png")
+```
+
+
+## Variation in Degree Centrality of DCGs {#sec-degree}
+@fig-degvariation shows the average degree per node with 95% confidence interval in each of the simulated models. Here, we see that the 95% confidence intervals in the dense models are relatively wider (right column of @fig-degvariation) than the ones in the sparse models (left column of @fig-degvariation), which indicate that there is less stability in degree estimation with the dense models. This is in accordance with the variation in density as shown in @fig-densityvariation), where the dense models are shown to have more variations in the estimated densities. 
+
+
+```{r}
+#| label: fig-degvariation
+#| echo: false
+#| fig-cap: "*Average degree for every node with 95% confidence interval per set of DCGs.* In *(a)*, the standard error (SE) is zero and accordingly the confidence interval (CI) doesn't exist. For the rest, the values of SE are also very small ($.001 - .01$), which makes it hard to visualize the CIs. For the ease of comparison, the SEs are scaled up. Hence, note that the width of CIs here can only be compared across different cases in a relative sense."
+#| fig-dpi: 600
+#| out-width: 90%
+
+knitr::include_graphics("img/degreevariation.png")
+```
+
+
+## Practical Applicability of CCD {#sec-applicability}
+We use the data provided by @mcnally2017, which contains information on depression and OCD symptoms for 408 patients. Here, we only use the depression symptom scores, which consist of 408 observations for 16 depression symptoms. 
+@fig-mcnallypag shows the partial ancestral graph (PAG) for the depression symptoms estimated by the CCD algorithm.
+
+A couple of features are apparent. First, there are two clusters (islands), one comprising symptoms related to sleeping problems, and the other one comprising symptoms related to appetite issue. Secondly, there exists a cycle (feedback loop): `anhedonia` $\rightarrow$ `fatigue` $\rightarrow$ `retard` $\rightarrow$ `sad` $\rightarrow$ `anhedonia`, which seems reasonable in a substantive sense. Here, we do not know the true underlying causal structure, but the overall findings from this causal graph is deemed rather informative and sensible, mostly aligning with our expectations.
+
+Just for a comparison, the statistical network model (GGM) is also estimated using graphical LASSO [@epskamp_tutorial_2018] as shown in @fig-mcnallynetwork. In accordance with the causal model, similar clustering structures are observed with symptoms related to sleep and appetite. Even though with this statistical network model we could additionally examine the *sign* of relations (edge color: blue/red = positive/negative) and the *strength* of relations (thickness of edges) between symptoms, we can hardly infer any causal relations or detect the presence of feedback loops, as we did with the causal model.
+
+
+```{r}
+#| label: fig-mcnallypag
+#| echo: false
+#| results: 'hide'
+#| fig-cap: "***PAG estimated by CCD algorithm for depression symptoms.*** In the PAG representation, there exists two types of underlining that are used in a triple of nodes: solid underlining (A -- <u>B</u> -- C) and dotted underlining. The colored nodes (in blue) refer to the presence of solid underlinings and the dashed nodes refer to the presence of dotted underlinings on the corresponding nodes. These underlinings are used to help determining directions of causal relations in a PAG. For more information, see @Richardson1996a."
+#| fig-dpi: 600
+
+## empirical data example
+# import data
+mcnally <- read.csv("../data/McNally.csv")
+# separate dep / ocd symptoms
+depression <- mcnally[,1:16]
+ocd <- mcnally[,17:26]
+
+# estimat PAG on depression symptoms (run CCD)
+ccd_mcnally_dep <- ccdKP(df=depression, dataType = "discrete", depth = -1)
+mat_mcnally_dep <- CreateAdjMat(ccd_mcnally_dep, p = ncol(depression))
+pag_mcnally_dep <- plotPAG(ccd_mcnally_dep, mat_mcnally_dep)
+```
+
+
+```{r mcnallynetwork}
+#| label: fig-mcnallynetwork
+#| echo: false
+#| results: 'hide'
+#| fig-cap: "*Statistical network model constructed via graphical LASSO for depression symptoms.*"
+
+# estimate network model for depression symptoms (graphical LASSO)
+cordep <- cor(depression)
+glassoFitdep <- EBICglasso(cordep, n = nrow(depression), gamma = 1)
+qgraph(glassoFitdep, layout = "spring", theme="colorblind", nodeNames = colnames(depression), legend.cex = 0.4)
+```
+
+<hr>
+
+# Conclusion
+ All in all, with these additional analyses, we learn that:
+ 
+ 1. There typically exists a considerable size of equivalence class and the variation in estimates is relatively large when the causal structure is dense.
+ 2. The CCD algorithm is indeed applicable in practice to typical
+psychological data and can be used to help discovering some interesting causal dynamics in psychological processes.
+
+
+Although the results from the first part of analyses imply quite some uncertainty and instability in estimation with the CCD algorithm, the core conclusion from the original simulation study (i.e., causal models are preferred to statistical network models when causal hypothesis is of interest) remains the same for the following reasons. First, even though the size of equivalence class can be larger than desired, the causal models still tend to be more informative than the *undirected* statistical network models when it comes to inferring directions of causal relations. Second, the difficulty in estimation with dense causal structures is equally problematic in statistical network models. In fact, the original simulation study showed that causal models outperformed the statistical network models under the dense conditions, in terms of approximating the true density and degree centrality.
+
+Outside of their use for causal discovery, statistical network models can be very useful as *descriptive* tools; to explore multivariate statistical relationships [@epskamp_gaussian_2018]; to visualize clustering structures [@golino_exploratory_2017]. However, if one is interested in the network approach to search for *causal mechanisms*, then the focus should be on estimating causal models rather than statistical network models.
+
+
+
+<hr>
+
+# References
+
+::: {#refs}
+:::
+
+<hr>
+
+# Session info
+
+```{r}
+sessionInfo()
+```

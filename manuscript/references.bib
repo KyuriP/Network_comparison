@@ -504,4 +504,94 @@ eprint = {
 
 
 
+@misc{constantin_general_2021,
+	abstract = {We introduce a general method for sample size computations in the context of cross-sectional network models. The method takes the form of an automated Monte Carlo algorithm, designed to find an optimal sample size while iteratively concentrating the computations on the sample sizes that seem most relevant. The method requires three inputs: 1) a hypothesized network structure or desired characteristics of that structure, 2) an estimation performance measure and its corresponding target value (e.g., a sensitivity of 0.6), and 3) a statistic and its corresponding target value that determines how the target value for the performance measure be reached (e.g., reaching a sensitivity of 0.6 with a probability of 0.8). The method consists of a Monte Carlo simulation step for computing the performance measure and the statistic for several sample sizes selected from an initial candidate sample size range, a curve-fitting step for interpolating the statistic across the entire candidate range, and a stratified bootstrapping step to quantify the uncertainty around the recommendation provided. We evaluated the performance of the method for the Gaussian Graphical Model, but it can easily extend to other models. The method displayed good performance, providing sample size recommendations that were, on average, within three observations of a benchmark sample size, with the highest standard deviation of 25.87 observations. The method discussed is implemented in the form of an R package called powerly, available on GitHub and CRAN.},
+	author = {Constantin, Mihai and Schuurman, No{\'e}mi Katalin and Vermunt, Jeroen},
+	doi = {10.31234/osf.io/j5v7u},
+	file = {Full Text PDF:/Users/Kyuri1/Zotero/storage/CGARX8QA/Constantin et al. - 2021 - A General Monte Carlo Method for Sample Size Analy.pdf:application/pdf},
+	keywords = {Gaussian Graphical Model, monotone splines, Monte Carlo simulation, network models, other, Psychology, Psychometrics, Quantitative Methods, Quantitative Psychology, sample size analysis, Social and Behavioral Sciences, Statistical Methods, stratified bootstrapping},
+	language = {en-us},
+	month = sep,
+	publisher = {PsyArXiv},
+	title = {A {General} {Monte} {Carlo} {Method} for {Sample} {Size} {Analysis} in the {Context} of {Network} {Models}},
+	url = {https://psyarxiv.com/j5v7u/},
+	urldate = {2022-12-17},
+	year = {2021},
+	bdsk-url-1 = {https://psyarxiv.com/j5v7u/},
+	bdsk-url-2 = {https://doi.org/10.31234/osf.io/j5v7u}}
+
+
+
+
+@article{golino_exploratory_2017,
+	abstract = {The estimation of the correct number of dimensions is a long-standing problem in psychometrics. Several methods have been proposed, such as parallel analysis (PA), Kaiser-Guttman's eigenvalue-greater-than-one rule, multiple average partial procedure (MAP), the maximum-likelihood approaches that use fit indexes as BIC and EBIC and the less used and studied approach called very simple structure (VSS). In the present paper a new approach to estimate the number of dimensions will be introduced and compared via simulation to the traditional techniques pointed above. The approach proposed in the current paper is called exploratory graph analysis (EGA), since it is based on the graphical lasso with the regularization parameter specified using EBIC. The number of dimensions is verified using the walktrap, a random walk algorithm used to identify communities in networks. In total, 32,000 data sets were simulated to fit known factor structures, with the data sets varying across different criteria: number of factors (2 and 4), number of items (5 and 10), sample size (100, 500, 1000 and 5000) and correlation between factors (orthogonal, .20, .50 and .70), resulting in 64 different conditions. For each condition, 500 data sets were simulated using lavaan. The result shows that the EGA performs comparable to parallel analysis, EBIC, eBIC and to Kaiser-Guttman rule in a number of situations, especially when the number of factors was two. However, EGA was the only technique able to correctly estimate the number of dimensions in the four-factor structure when the correlation between factors were .7, showing an accuracy of 100\% for a sample size of 5,000 observations. Finally, the EGA was used to estimate the number of factors in a real dataset, in order to compare its performance with the other six techniques tested in the simulation study.},
+	author = {Golino, Hudson F. and Epskamp, Sacha},
+	doi = {10.1371/journal.pone.0174035},
+	file = {Full Text PDF:/Users/Kyuri1/Zotero/storage/JJD5HXU7/Golino and Epskamp - 2017 - Exploratory graph analysis A new approach for est.pdf:application/pdf},
+	issn = {1932-6203},
+	journal = {PLOS ONE},
+	keywords = {Covariance, Developmental psychology, Eigenvalues, Factor analysis, Network analysis, Psychology, Psychometrics, Simulation and modeling},
+	language = {en},
+	month = jun,
+	note = {Publisher: Public Library of Science},
+	number = {6},
+	pages = {e0174035},
+	shorttitle = {Exploratory graph analysis},
+	title = {Exploratory graph analysis: {A} new approach for estimating the number of dimensions in psychological research},
+	url = {https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0174035},
+	urldate = {2022-12-17},
+	volume = {12},
+	year = {2017},
+	bdsk-url-1 = {https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0174035},
+	bdsk-url-2 = {https://doi.org/10.1371/journal.pone.0174035}}
+
+
+
+
+@article{epskamp_gaussian_2018,
+	abstract = {We discuss the Gaussian graphical model (GGM; an undirected network of partial correlation coefficients) and detail its utility as an exploratory data analysis tool. The GGM shows which variables predict one-another, allows for sparse modeling of covariance structures, and may highlight potential causal relationships between observed variables. We describe the utility in three kinds of psychological data sets: data sets in which consecutive cases are assumed independent (e.g., cross-sectional data), temporally ordered data sets (e.g., n = 1 time series), and a mixture of the 2 (e.g., n {\textgreater} 1 time series). In time-series analysis, the GGM can be used to model the residual structure of a vector-autoregression analysis (VAR), also termed graphical VAR. Two network models can then be obtained: a temporal network and a contemporaneous network. When analyzing data from multiple subjects, a GGM can also be formed on the covariance structure of stationary means---the between-subjects network. We discuss the interpretation of these models and propose estimation methods to obtain these networks, which we implement in the R packages graphicalVAR and mlVAR. The methods are showcased in two empirical examples, and simulation studies on these methods are included in the supplementary materials.},
+	author = {Epskamp, Sacha and Waldorp, Lourens J. and M{\~o}ttus, Ren{\'e} and Borsboom, Denny},
+	doi = {10.1080/00273171.2018.1454823},
+	file = {Full Text PDF:/Users/Kyuri1/Zotero/storage/2TRVH3IP/Epskamp et al. - 2018 - The Gaussian Graphical Model in Cross-Sectional an.pdf:application/pdf},
+	issn = {0027-3171},
+	journal = {Multivariate Behavioral Research},
+	keywords = {exploratory-data analysis, multilevel modeling, multivariate analysis, network modeling, Time-series analysis},
+	month = jul,
+	note = {Publisher: Routledge \_eprint: https://doi.org/10.1080/00273171.2018.1454823},
+	number = {4},
+	pages = {453--480},
+	pmid = {29658809},
+	title = {The {Gaussian} {Graphical} {Model} in {Cross}-{Sectional} and {Time}-{Series} {Data}},
+	url = {https://doi.org/10.1080/00273171.2018.1454823},
+	urldate = {2022-12-17},
+	volume = {53},
+	year = {2018},
+	bdsk-url-1 = {https://doi.org/10.1080/00273171.2018.1454823}}
+
+
+
+
+
+
+@article{epskamp_tutorial_2018,
+	abstract = {Recent years have seen an emergence of network modeling applied to moods, attitudes, and problems in the realm of psychology. In this framework, psychological variables are understood to directly affect each other rather than being caused by an unobserved latent entity. In this tutorial, we introduce the reader to estimating the most popular network model for psychological data: the partial correlation network. We describe how regularization techniques can be used to efficiently estimate a parsimonious and interpretable network structure in psychological data. We show how to perform these analyses in R and demonstrate the method in an empirical example on post-traumatic stress disorder data. In addition, we discuss the effect of the hyperparameter that needs to be manually set by the researcher, how to handle non-normal data, how to determine the required sample size for a network analysis, and provide a checklist with potential solutions for problems that can arise when estimating regularized partial correlation networks.},
+	annote = {Comment: In press in Psychological Methods (DOI: 10.1037/met0000167)},
+	author = {Epskamp, Sacha and Fried, Eiko I.},
+	doi = {10.1037/met0000167},
+	file = {arXiv Fulltext PDF:/Users/Kyuri1/Zotero/storage/K84BHZHH/Epskamp and Fried - 2018 - A Tutorial on Regularized Partial Correlation Netw.pdf:application/pdf;arXiv.org Snapshot:/Users/Kyuri1/Zotero/storage/64LSQZPD/1607.html:text/html},
+	issn = {1939-1463, 1082-989X},
+	journal = {Psychological Methods},
+	keywords = {Statistics - Applications, Statistics - Methodology},
+	month = dec,
+	note = {arXiv:1607.01367 [stat]},
+	number = {4},
+	pages = {617--634},
+	title = {A {Tutorial} on {Regularized} {Partial} {Correlation} {Networks}},
+	url = {http://arxiv.org/abs/1607.01367},
+	urldate = {2022-12-17},
+	volume = {23},
+	year = {2018},
+	bdsk-url-1 = {http://arxiv.org/abs/1607.01367},
+	bdsk-url-2 = {https://doi.org/10.1037/met0000167}}
+
 
