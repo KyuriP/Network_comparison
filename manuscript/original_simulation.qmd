@@ -543,9 +543,11 @@ trueobj <- list(true4p, true4p_high, true5p, true5p_high, true6p, true6p_high)
 ggmobj <- list(ggm4p, ggm4p_high, ggm5p, ggm5p_high, ggm6p, ggm6p_high)
 dcgobj <- list(equiv4p, equiv4p_high, equiv5p, equiv5p_high, equiv6p, equiv6p_high)
 modelnames <- c("4node-sparse","4node-dense","5node-sparse","5node-dense","6node-sparse","6node-dense")
-
+# storage for computed degrees
 deglist <- list()
 for(i in seq_along(trueobj)){
+  # compute the degree for each of the true models and GGMs,
+  # and the average degree for DCGs
   deglist[[i]] <- bind_cols(GGMdegree(trueobj[[i]]),GGMdegree(ggmobj[[i]]), DCGdegree(dcgobj[[i]])) %>% 
     select(contains(c("node...1", "degree"))) %>% 
     rename(node = node...1, truedegree = degree...2, ggmdegree = degree...4 , dcg_avgdegree = average_degree) %>% 

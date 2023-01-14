@@ -5,9 +5,9 @@
 # This script contains simulated models that are used in the original study.
 # There are in total 6 models considered: 4nodes-sparse, 4nodes-dense, 5nodes-sparse,
 # 5nodes-dense, 6nodes-sparse, 6nodes-dense.
-# We estimated a GGM and PAG (using the CCD algorithm) for each model, as shown below.
-# They are commented out but you can un-comment them and
-# run the code to see the resulting models.
+# We estimate a GGM and PAG (using the CCD algorithm) for each model, as shown below.
+# We also retrieve a Markov equivalence class of DCGs based on the estimated PAG 
+# from each condition, but they are commented out as it takes several minutes to run.
 ## =============================================================================
 
 
@@ -46,27 +46,27 @@ layout4 = matrix(c(-1,1,
                    -1,0,
                    1,0,
                    1,1),4,2,byrow = T)
-# ## True graph
-# true4p <- qgraph(t(B4), layout=layout4, labels = colnames(B4), theme="colorblind")
-#
-#
-# ## Data generating
-# # equilibrium check
-# equilibrium_check(B4)
-# # generate data
-# data4p <- gen_dat(B4, N =1e6, seed = 1)
-#
-# ## GGM
-# ggm4p <- qgraph(cor(data4p), layout=layout4, theme="colorblind")
-#
-# ## run CCD algorithm
-# ccd_4p <- ccdKP(df=data4p, dataType = "continuous", alpha = 0.05)
+## True graph
+true4p <- qgraph(t(B4), layout=layout4, labels = colnames(B4), theme="colorblind")
+
+## Data generating
+# equilibrium check
+equilibrium_check(B4)
+# generate data
+data4p <- gen_dat(B4, N =1e6, seed = 1)
+
+## Estimate GGM
+ggm4p <- qgraph(cor(data4p), layout=layout4, theme="colorblind")
+
+## Run CCD algorithm
+ccd_4p <- ccdKP(df=data4p, dataType = "continuous", alpha = 0.05)
+mat4p <- CreateAdjMat(ccd_4p, 4)
 
 ## Estimate PAG
-# pag4p <- plotPAG(ccd_4p, mat4p)
+pag4p <- plotPAG(ccd_4p, mat4p)
 
-## Compute equivalence class of all DCGs given the PAG
-# (this takes relatively a long time, so we save the object)
+# ## Compute equivalence class of all DCGs given the PAG
+# # (this takes relatively a long time, so we save the object)
 # equiv4p <- semiequiv_dcg(ccd_4p, mat4p)
 # save(equiv4p, file="data/equiv4p.RData")
 # load("data/equiv4p.RData")
@@ -83,24 +83,24 @@ B4_high = matrix(c(0, 0, 0, 0,
                    -0.8, 0, 0, 0), p, p, byrow = T)
 colnames(B4_high) <- c("X1", "X2", "X3", "X4")
 
-# ## True graph
-# true4p_high <- qgraph(t(B4_high), layout=layout4, labels = colnames(B4_high), theme="colorblind")
-#
-# ## Data generating
-# # equilibrium check
-# equilibrium_check(B4_high)
-# # generate data
-# data4p_high <- gen_dat(B4_high, N =1e6, seed = 1)
-#
-# ## GGM
-# ggm4p_high <- qgraph(t(cor(data4p_high)), layout=layout4, theme="colorblind")
-#
-# ## run CCD algorithm
-# ccd_4p_high <- ccdKP(df=data4p_high, dataType = "continuous", alpha = 0.05)
-# mat4p_high <- CreateAdjMat(ccd_4p_high, 4)
+## True graph
+true4p_high <- qgraph(t(B4_high), layout=layout4, labels = colnames(B4_high), theme="colorblind")
 
-# Estimate PAG
-# pag4p <- plotPAG(ccd_4p_high, mat4p_high)
+## Data generating
+# equilibrium check
+equilibrium_check(B4_high)
+# generate data
+data4p_high <- gen_dat(B4_high, N =1e6, seed = 1)
+
+## Estimate GGM
+ggm4p_high <- qgraph(t(cor(data4p_high)), layout=layout4, theme="colorblind")
+
+## Run CCD algorithm
+ccd_4p_high <- ccdKP(df=data4p_high, dataType = "continuous", alpha = 0.05)
+mat4p_high <- CreateAdjMat(ccd_4p_high, 4)
+
+## Estimate PAG
+pag4p <- plotPAG(ccd_4p_high, mat4p_high)
 
 ## Compute equivalence class of all DCGs given the PAG
 # (this takes relatively a long time, so we save the object)
@@ -127,24 +127,24 @@ layout5 = matrix(c(0,1,
                    1,-1,
                    2,0,
                    2,1),5,2,byrow = T)
-# ## True graph
-# true5p <- qgraph(t(B5), layout=layout5, labels = colnames(B5), theme="colorblind")
-#
-# ## Data generating
-# # equilibrium check
-# equilibrium_check(B5)
-# # generate data
-# data5p <- gen_dat(B5, N =1e6, seed = 123)
-#
-# ## GGM
-# ggm5p <- qgraph(cor(data5p), layout = layout5, theme="colorblind")
-#
-# ## run CCD algorithm
-# ccd_5p <- ccdKP(df=data5p, dataType = "continuous", alpha = 0.05)
-# mat5p <- CreateAdjMat(ccd_5p, 5)
+## True graph
+true5p <- qgraph(t(B5), layout=layout5, labels = colnames(B5), theme="colorblind")
 
-# Estimate PAG
-# pag5p <- plotPAG(ccd_5p, mat5p)
+## Data generating
+# equilibrium check
+equilibrium_check(B5)
+# generate data
+data5p <- gen_dat(B5, N =1e6, seed = 123)
+
+## Estimate GGM
+ggm5p <- qgraph(cor(data5p), layout = layout5, theme="colorblind")
+
+## Run CCD algorithm
+ccd_5p <- ccdKP(df=data5p, dataType = "continuous", alpha = 0.05)
+mat5p <- CreateAdjMat(ccd_5p, 5)
+
+## Estimate PAG
+pag5p <- plotPAG(ccd_5p, mat5p)
 
 ## Compute equivalence class of all DCGs given the PAG
 # (this takes relatively a long time, so we save the object)
@@ -172,24 +172,24 @@ layout5 = matrix(c(0,1,
                    2,0,
                    2,1),5,2,byrow = T)
 
-# ## True graph
-# true5p_high <- qgraph(t(B5_high), layout=layout5, labels = colnames(B5_high), theme="colorblind")
-#
-# ## Data generating
-# # equilibrium check
-# equilibrium_check(B5_high)
-# # generate data
-# data5p_high <- gen_dat(B5_high, N =1e6, seed = 1)
-#
-# ## GGM
-# ggm5p_high <- qgraph(cor(data5p_high), layout = layout5, theme="colorblind")
-#
-# ## run CCD algorithm
-# ccd_5p_high <- ccdKP(df=data5p_high, dataType = "continuous", alpha = 0.05)
-# mat5p_high <- CreateAdjMat(ccd_5p_high, 5)
+## True graph
+true5p_high <- qgraph(t(B5_high), layout=layout5, labels = colnames(B5_high), theme="colorblind")
+
+## Data generating
+# equilibrium check
+equilibrium_check(B5_high)
+# generate data
+data5p_high <- gen_dat(B5_high, N =1e6, seed = 1)
+
+## Estimate GGM
+ggm5p_high <- qgraph(cor(data5p_high), layout = layout5, theme="colorblind")
+
+## Run CCD algorithm
+ccd_5p_high <- ccdKP(df=data5p_high, dataType = "continuous", alpha = 0.05)
+mat5p_high <- CreateAdjMat(ccd_5p_high, 5)
 
 ## Estimate PAG
-# pag5p_high <- plotPAG(ccd_5p_high, mat5p_high)
+pag5p_high <- plotPAG(ccd_5p_high, mat5p_high)
 
 ## Compute equivalence class of all DCGs given the PAG
 # (this takes relatively a long time, so we save the object)
@@ -218,25 +218,25 @@ layout6 = matrix(c(1, 2,
                    2,0,
                    2,1),6,2,byrow = T)
 
-# ## True graph
-# true6p <- qgraph(t(B6), layout=layout6, labels = colnames(B6), theme="colorblind")
-#
-# ## Data generating
-# # equilibrium check
-# equilibrium_check(B6)
-# # generate data
-# data6p <- gen_dat(B6, N =1e6, seed = 123)
-#
-# ## GGM
-# ggm6p <- qgraph(cor(data6p), layout = layout6, theme="colorblind")
-#
-#
-# ## run CCD algorithm
-# ccd_6p <- ccdKP(df=data6p, dataType = "continuous", alpha = 0.05)
-# mat6p <- CreateAdjMat(ccd_6p, 6)
+## True graph
+true6p <- qgraph(t(B6), layout=layout6, labels = colnames(B6), theme="colorblind")
+
+## Data generating
+# equilibrium check
+equilibrium_check(B6)
+# generate data
+data6p <- gen_dat(B6, N =1e6, seed = 123)
+
+## GGM
+ggm6p <- qgraph(cor(data6p), layout = layout6, theme="colorblind")
+
+
+## Run CCD algorithm
+ccd_6p <- ccdKP(df=data6p, dataType = "continuous", alpha = 0.05)
+mat6p <- CreateAdjMat(ccd_6p, 6)
 
 ## Estimate PAG
-# pag6p <- plotPAG(ccd_6p, mat6p)
+pag6p <- plotPAG(ccd_6p, mat6p)
 
 ## Compute equivalence class of all DCGs given the PAG
 # (this takes relatively a long time, so we save the object)
@@ -260,23 +260,23 @@ B6_high = matrix(c(0, 0, 0, 0, 0, 0,
 colnames(B6_high) <- c("X1", "X2", "X3", "X4", "X5", "X6")
 
 
-# true6p_high <- qgraph(t(B6_high), layout=layout6, labels = colnames(B6), theme="colorblind")
-#
-# ## Data generating
-# # equilibrium check
-# equilibrium_check(B6_high)
-# # generate data
-# data6p_high<- gen_dat(B6_high, N =1e6, seed = 123)
-#
-# ## GGM
-# ggm6p_high <- qgraph(cor(data6p_high), layout = layout6, theme="colorblind")
-#
-# ## run CCD algorithm
-# ccd_6p_high <- ccdKP(df=data6p_high, dataType = "continuous", alpha = 0.05)
-# mat6p_high <- CreateAdjMat(ccd_6p_high, 6)
+true6p_high <- qgraph(t(B6_high), layout=layout6, labels = colnames(B6), theme="colorblind")
+
+## Data generating
+# equilibrium check
+equilibrium_check(B6_high)
+# generate data
+data6p_high<- gen_dat(B6_high, N =1e6, seed = 123)
+
+## Estimate GGM
+ggm6p_high <- qgraph(cor(data6p_high), layout = layout6, theme="colorblind")
+
+## Run CCD algorithm
+ccd_6p_high <- ccdKP(df=data6p_high, dataType = "continuous", alpha = 0.05)
+mat6p_high <- CreateAdjMat(ccd_6p_high, 6)
 
 ## Estimate PAG
-# pag6p_high <- plotPAG(ccd_6p_high, mat6p_high)
+pag6p_high <- plotPAG(ccd_6p_high, mat6p_high)
 
 ## Compute equivalence class of all DCGs given the PAG
 # (this takes relatively a long time, so we save the object)
