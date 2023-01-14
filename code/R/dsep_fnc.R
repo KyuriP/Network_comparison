@@ -1,7 +1,7 @@
 ## ============================================================================
-## It contains one function `dsep_KP`.
+## It contains a function `dsep_KP`.
 ##
-## Purpose: It tests if the set a and the set b are d-separated given the set S.
+## Purpose: It tests if the set "a" and the set "b" are d-separated given the set "S".
 ## This function is used when finding all equivalence class of DCGs
 ## in `semiequiv_dcg` function from `equivset_fnc.R`.
 ## ============================================================================

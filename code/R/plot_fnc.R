@@ -2,7 +2,7 @@
 ## It contains four functions:
 ## `CreateAdjMat`, `extracttriples`, `extractnode`, and `plotPAG`.
 ##
-## Purpose: It plots the PAG using the ccd object from ccd_KP function.
+## Purpose: It plots a PAG using the ccd object from `ccd_KP` function.
 ## `plotPAG` is the main function that plots a PAG and
 ## it is dependent on the other three functions.
 ## ============================================================================

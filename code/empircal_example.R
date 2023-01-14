@@ -2,14 +2,14 @@
 ## =============================================================================
 ## Description
 #
-# This script concerns applying CCD to empirical data from McNally et al. (2017)
-# in order to test the practical applicability of CCD.
+# This script concerns applying the CCD algorithm to empirical data from McNally et al. (2017)
+# in order to test the practical applicability of the algorithm.
 #
 # The data is obtained from : https://www.cambridge.org/core/journals/psychological-medicine/article/abs/comorbid-obsessivecompulsive-disorder-and-depression-a-bayesian-network-approach/DAA4E2352A9E26809A4EAE35C366E900#supplementary-materials
 
-# It contains the code to create Figure 4 and Figure 5 in the report.
-# Figure 4: PAG (partial ancestral graph) from CCD on depression symptoms.
-# Figure 5: GGM on depression symptoms using GLASSO.
+# It contains the code to create Figure 4 and Figure 5 in the manuscript "Follow-up Study".
+# Figure 4: PAG of depression symptoms estimated by the CCD algorithm.
+# Figure 5: GGM of depression symptoms using GLASSO.
 ## =============================================================================
 
 
@@ -27,7 +27,7 @@ library(dplyr)
 source("code/R/CCD_fnc.R")
 source("code/R/plot_fnc.R")
 
-## import example empirical data
+## import the example empirical data
 mcnally <- read.csv("data/McNally.csv")
 
 # separate depression / OCD symptoms

@@ -3,7 +3,7 @@
 ## `GGMdegree`, and `DCGdegree`.
 ##
 ## Purpose: It computes density and degrees per node for
-## true cyclic model, GGM, and DCGs. ============================================================================
+## true cyclic models, GGMs, and DCGs. ============================================================================
 
 #' Compute density for GGM
 #' @param qgraph.object the qgraph object

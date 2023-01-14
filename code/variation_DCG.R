@@ -2,16 +2,14 @@
 ## =============================================================================
 ## Description
 #
-# This script contains the code to create the Figure 2 and Figure 3 in the report.
+# This script contains the code to create the Figure 2 and Figure 3 in the manuscript "Follow-up Study".
 # Figure 2: Distribution of densities per each set of DCGs.
 # Figure 3: Average degree for every node per each set of DCGs with 95% confidence interval.
 ## =============================================================================
 
 
 ## =============================================================================
-#
-## Preparation
-#
+# Preparation
 ## =============================================================================
 ## load necessary packages
 library(qgraph)
@@ -23,7 +21,7 @@ library(ggplot2)
 source("code/R/variation_fnc.R")
 source("code/simulation.R")
 
-## load all the equivalence set of DCGs from the simulation
+## load all the equivalence set of DCGs from the original simulation study
 load("data/equiv4p.RData")
 load("data/equiv4p_high.RData")
 load("data/equiv5p.RData")

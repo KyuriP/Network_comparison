@@ -2,10 +2,10 @@
 ## =============================================================================
 ## Description
 #
-# This script contains models that are used in the simulation study.
+# This script contains models that are used in the original study.
 # There are in total 6 models considered (4nodes-sparse, 4nodes-dense, 5nodes-sparse,
 # 5nodes-dense, 6nodes-sparse, 6nodes-dense).
-# We estimated GGM and PAG (using CCD) for each model, as shown below.
+# We estimated a GGM and PAG (using CCD algorithm) for each model, as shown below.
 # They are commented out but you can un-comment them and
 # run the code to see the resulting models.
 ## =============================================================================
@@ -197,6 +197,7 @@ layout5 = matrix(c(0,1,
 # save(equiv5p_high, file="data/equiv5p_high.RData")
 # load("data/equiv5p_high.RData")
 
+
 ## ========================
 ## Model 5) 6 nodes - sparse
 ## ========================
@@ -242,6 +243,7 @@ layout6 = matrix(c(1, 2,
 # equiv6p <- semiequiv_dcg(ccd_6p, mat6p)
 # save(equiv6p, file="data/equiv6p.RData")
 # load("data/equiv6p.RData")
+
 
 ## ========================
 ## Model 6) 6 nodes - dense

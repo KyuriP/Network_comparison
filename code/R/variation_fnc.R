@@ -1,3 +1,11 @@
+## ============================================================================
+## It contains two functions `DCGdensities` and `DCGdegrees`.
+##
+## Purpose: To compute the density and degree for an equivalence class of DCGs
+## per model. It is used in `variation_DCG.R` where the corresponding figures 
+## are created.
+## ============================================================================
+
 
 
 #' Density for equivalence class of DCGs

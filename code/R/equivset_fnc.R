@@ -1,12 +1,12 @@
 ## ============================================================================
-## It contains one function `semiequiv_dcg`.
+## It contains a function `semiequiv_dcg`.
 ##
 ## Purpose: It computes all directed cyclic graph (DCGs) in an equivalence class
-## based on a PAG estimated by CCD algorithm.
+## based on a PAG estimated by the CCD algorithm.
 ##
-## (Note: we've tested this function and it has performed well so far.
-## But we are not 100% sure that we've indeed covered all possible cases.
-## We are currently working on testing it more thoroughly).
+## (Note: I've tested this function and it has performed well so far.
+## But I am still not 100% sure if I've covered all possible cases.
+## I am currently working on making a more thorough set of tests).
 ## ============================================================================
 
 
@@ -205,4 +205,4 @@ semiequiv_dcg <- function(ccdobj, pag, verbose = FALSE)
 ## TO-DOs in future ##
 ######################
 # - using "cpdag" or "pdag" when searching ancestors/descendants... --> think of the implications!!
-# - p-adjacency preserved in all DCGs... is it sufficient to check only circle-circle edges. think about it again. (the intuition is when there is no circle, and the endpoints are definitely specified, the ancestor information seem to be sufficient to obtain the equivalence class. But when the circle occurs, suddenly the ancestor information becomes much less informative).
+# - p-adjacency preserved in all DCGs... is it sufficient to check only circle-circle edges. think about it again. (the intuition is when there is no circle, and the endpoints are definitely specified, the ancestor information seems to be sufficient to obtain the equivalence class. But when the circle occurs, suddenly the ancestor information becomes much less informative).

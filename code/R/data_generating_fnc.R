@@ -3,7 +3,7 @@
 ##
 ## Purpose: It checks if the specified regression matrix (B) reaches
 ## an equilibrium state, which is necessary for a cyclic model to converge.
-## Then, it generates the data according to the B matrix.
+## Then, it generates the data according to the specified B matrix.
 ## ============================================================================
 
 #' Check equilibrium state
@@ -30,7 +30,6 @@ equilibrium_check <- function(B){
 #' @param seed set the specific seed
 #'
 #' @return the matrix of data (N by variable numbers)
-#'
 gen_dat <- function(B, N = 1e6, seed = NULL){
   dimension <- ncol(B)
   # I - B inverse
