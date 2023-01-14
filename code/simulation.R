@@ -2,10 +2,10 @@
 ## =============================================================================
 ## Description
 #
-# This script contains models that are used in the original study.
-# There are in total 6 models considered (4nodes-sparse, 4nodes-dense, 5nodes-sparse,
-# 5nodes-dense, 6nodes-sparse, 6nodes-dense).
-# We estimated a GGM and PAG (using CCD algorithm) for each model, as shown below.
+# This script contains simulated models that are used in the original study.
+# There are in total 6 models considered: 4nodes-sparse, 4nodes-dense, 5nodes-sparse,
+# 5nodes-dense, 6nodes-sparse, 6nodes-dense.
+# We estimated a GGM and PAG (using the CCD algorithm) for each model, as shown below.
 # They are commented out but you can un-comment them and
 # run the code to see the resulting models.
 ## =============================================================================
