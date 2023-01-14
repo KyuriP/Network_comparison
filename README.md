@@ -74,5 +74,5 @@ The file structure is shown as below.
   - `.css` files: for the minor styling and layout of the manuscripts.
   
 
-
+---
 For any help with the files in this archive, please contact Kyuri Park (k.park@uu.nl). 
