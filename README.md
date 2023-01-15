@@ -1,7 +1,7 @@
 # Network_comparison
 This repository serves as a research archive for the mini-project "Comparison of Gaussian graphical models (GGM) and Directed Cyclic Graph (DCG) Models as Causal Discovery Tools", 
 which is an extension of my Master's thesis [(mid-report PDF here)](https://github.com/KyuriP/Markup_manuscript/blob/main/main.pdf). 
-This repository contains all necessary files to replicate the [original simulation study](https://rpubs.com/KyuriP/992071) 
+This repository contains all necessary files to reproduce the [original simulation study](https://rpubs.com/KyuriP/992071) 
 and [the follow-up analyses](https://rpubs.com/KyuriP/992072).
 
 ## Contents
