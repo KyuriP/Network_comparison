@@ -34,8 +34,8 @@ gen_dat <- function(B, N = 1e6, seed = NULL){
   dimension <- ncol(B)
   # I - B inverse
   inverse <- solve(diag(dimension) - B)
-  # sample errors (std. normal)
   if(!is.null(seed)) set.seed(seed)
+  # sample errors (std. normal)
   errors <- MASS::mvrnorm(n = N, mu = rep(0, dimension), Sigma = diag(dimension))
   # generate data: (I_B)*errors
   data <- t(apply(errors, 1, function(x) inverse %*% x))
