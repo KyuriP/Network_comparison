@@ -159,8 +159,8 @@ colnames(B4) <- c("X1", "X2", "X3", "X4")
 ## Generate data
 # first, equilibrium check (necessary condition for cyclic models to converge)
 equilibrium_check(B4)
-# generated data with N = 10^6, seed = 1
-data4p <- gen_dat(B4, N =1e6, seed = 1)
+# generated data with N = 10^6, seed = 12345
+data4p <- gen_dat(B4, N =1e6, seed = 12345)
 
 ## Specify layout
 layout4 = matrix(c(-1,1,
@@ -273,7 +273,7 @@ colnames(B5) <- c("X1", "X2", "X3", "X4", "X5")
 # first, equilibrium check (necessary condition for cyclic models to converge)
 equilibrium_check(B5)
 # generated data with N = 10^6, seed = 123
-data5p <- gen_dat(B5, N =1e6, seed = 123)
+data5p <- gen_dat(B5, N =1e6, seed = 1)
 
 ## Specify layout
 layout5 = matrix(c(0,1,
