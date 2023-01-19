@@ -2,7 +2,7 @@
 This repository serves as a research archive for the mini-project "Comparison of Gaussian graphical models (GGM) and Directed Cyclic Graph (DCG) Models as Causal Discovery Tools", 
 which is an extension of my Master's thesis [(mid-report PDF here)](https://github.com/KyuriP/Markup_manuscript/blob/main/main.pdf). 
 This repository contains all necessary files to reproduce the [original simulation study](https://rpubs.com/KyuriP/992071) 
-and [the follow-up analyses](https://rpubs.com/KyuriP/992072).
+and [the follow-up analysis](https://rpubs.com/KyuriP/992072).
 
 ## Contents
 The file structure is shown as below.
@@ -51,7 +51,7 @@ The file structure is shown as below.
 ```
 
 ### CODE
-- `code` folder contains all the code used for the original simulation study and follow-up analyses.
+- `code` folder contains all the code used for the original simulation study and follow-up analysis.
 - Three R scripts contains the code for simulating models in the original study and creating figures presented in the follow-up report.
   - `simulation.R`: code to simulate all six different models.
   - `variation_DCG.R`: code to create the density plots (Figure 2) and degree centrality plots (Figure 3) in the follow-up report.
@@ -63,9 +63,9 @@ The file structure is shown as below.
 - Also, an example empirical data `McNally.csv` can be found in this folder.
 
 ### MANUSCRIPT
-- `original_simulation.html` is the manuscript for the main analyses.
+- `original_simulation.html` is the manuscript for the main analysis.
 - `original_simulation.qmd` renders the main manuscript.
-- `follow-up.html` is the manuscript for the follow-up analyses.
+- `follow-up.html` is the manuscript for the follow-up analysis.
 - `follow-up.qmd` renders the follow-up manuscript.
 - other supporting files/folders:
   - `img`: img folder contains all necessary image files to render the manuscripts.
@@ -76,7 +76,7 @@ The file structure is shown as below.
 ### RECOMMENDATION
 1) Check the manuscripts. (`original_simulation.html` and `follow-up.html`)
 2) To reproduce the original simulation study, either check the code presented in `original_simulation.html` (click `See code here`) or check the [quarto document](https://github.com/KyuriP/Network_comparison/blob/main/manuscript/original_simulation.qmd) where all code is self-contained.
-3) To reproduce the follow-up analyses, run the following R scripts: `variation_DCG.R` and `empircal_example.R` for the first sub-analysis and the second sub-analysis, respectively. 
+3) To reproduce the follow-up analysis, run the following R scripts: `variation_DCG.R` and `empircal_example.R` for the first sub-analysis and the second sub-analysis, respectively. 
 4) For any further information, see the detailed description attached to each R script.
 
 ---
