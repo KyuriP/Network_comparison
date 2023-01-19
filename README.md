@@ -75,7 +75,7 @@ The file structure is shown as below.
   
 ### RECOMMENDATION
 1) Check the manuscripts. (`original_simulation.html` and `follow-up.html`)
-2) To reproduce the original simulation study, either check the code presented in `original_simulation.html` (click `See code here`) or check the [quarto document](https://github.com/KyuriP/Network_comparison/blob/main/manuscript/original_simulation.qmd) where all code is self-contained.
+2) To reproduce the original simulation study, either check the code presented in `original_simulation.html` or check the [quarto document](https://github.com/KyuriP/Network_comparison/blob/main/manuscript/original_simulation.qmd) that contains all the code.
 3) To reproduce the follow-up analysis, run the following R scripts: `variation_DCG.R` and `empircal_example.R` for the first sub-analysis and the second sub-analysis, respectively. 
 4) For any further information, see the detailed description attached to each R script.
 
