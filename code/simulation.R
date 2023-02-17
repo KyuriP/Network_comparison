@@ -59,7 +59,7 @@ layout4 = matrix(c(-1,1,
 # data4p <- gen_dat(B4, N =1e6, seed = 12345)
 # 
 # ## Estimate GGM
-# ggm4p <- qgraph(cor(data4p), layout=layout4, theme="colorblind")
+# ggm4p <- qgraph(cor(data4p), layout=layout4, theme="colorblind", graph = "pcor")
 # 
 # ## Run CCD algorithm
 # ccd_4p <- ccdKP(df=data4p, dataType = "continuous", alpha = 0.05)
@@ -96,7 +96,7 @@ colnames(B4_high) <- c("X1", "X2", "X3", "X4")
 # data4p_high <- gen_dat(B4_high, N =1e6, seed = 12345)
 # 
 # ## Estimate GGM
-# ggm4p_high <- qgraph(t(cor(data4p_high)), layout=layout4, theme="colorblind")
+# ggm4p_high <- qgraph(t(cor(data4p_high)), layout=layout4, theme="colorblind", graph = "pcor")
 # 
 # ## Run CCD algorithm
 # ccd_4p_high <- ccdKP(df=data4p_high, dataType = "continuous", alpha = 0.05)
@@ -140,7 +140,7 @@ layout5 = matrix(c(0,1,
 # data5p <- gen_dat(B5, N =1e6, seed = 1)
 # 
 # ## Estimate GGM
-# ggm5p <- qgraph(cor(data5p), layout = layout5, theme="colorblind")
+# ggm5p <- qgraph(cor(data5p), layout = layout5, theme="colorblind", graph = "pcor")
 # 
 # ## Run CCD algorithm
 # ccd_5p <- ccdKP(df=data5p, dataType = "continuous", alpha = 0.05)
@@ -185,7 +185,7 @@ layout5 = matrix(c(0,1,
 # data5p_high <- gen_dat(B5_high, N =1e6, seed = 1)
 # 
 # ## Estimate GGM
-# ggm5p_high <- qgraph(cor(data5p_high), layout = layout5, theme="colorblind")
+# ggm5p_high <- qgraph(cor(data5p_high), layout = layout5, theme="colorblind", graph = "pcor")
 # 
 # ## Run CCD algorithm
 # ccd_5p_high <- ccdKP(df=data5p_high, dataType = "continuous", alpha = 0.05)
@@ -231,7 +231,7 @@ layout6 = matrix(c(1, 2,
 # data6p <- gen_dat(B6, N =1e6, seed = 123)
 # 
 # ## GGM
-# ggm6p <- qgraph(cor(data6p), layout = layout6, theme="colorblind")
+# ggm6p <- qgraph(cor(data6p), layout = layout6, theme="colorblind", graph = "pcor")
 # 
 # 
 # ## Run CCD algorithm
@@ -272,7 +272,7 @@ colnames(B6_high) <- c("X1", "X2", "X3", "X4", "X5", "X6")
 # data6p_high<- gen_dat(B6_high, N =1e6, seed = 123)
 # 
 # ## Estimate GGM
-# ggm6p_high <- qgraph(cor(data6p_high), layout = layout6, theme="colorblind")
+# ggm6p_high <- qgraph(cor(data6p_high), layout = layout6, theme="colorblind", graph = "pcor")
 # 
 # ## Run CCD algorithm
 # ccd_6p_high <- ccdKP(df=data6p_high, dataType = "continuous", alpha = 0.05)

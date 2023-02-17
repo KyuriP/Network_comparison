@@ -176,7 +176,7 @@ true4p <- qgraph(t(B4), layout=layout4, labels = colnames(B4),
 title("True cyclic graph",  font.main = 1, cex.main = 1.2, line = 4, outer=TRUE, adj = 0.11)
 
 ## Estimate GGM
-ggm4p <- qgraph(cor(data4p), layout=layout4, theme="colorblind", vsize = 20, asize = 10)
+ggm4p <- qgraph(cor(data4p), layout=layout4, theme="colorblind", vsize = 20, asize = 10, graph = "pcor")
 title(main = "GGM", font.main = 1, cex.main = 1.2, line = 4, outer=TRUE, adj = 0.5)
 
 ## Run CCD algorithm
@@ -233,7 +233,7 @@ true4p_high <- qgraph(t(B4_high), layout=layout4, labels = colnames(B4_high),
 title("True cyclic graph",  font.main = 1, cex.main = 1.2, line = 4, outer=TRUE, adj = 0.11)
 
 ## Estimate GGM
-ggm4p_high <- qgraph(t(cor(data4p_high)), layout=layout4, theme="colorblind", vsize = 20, asize = 10)
+ggm4p_high <- qgraph(t(cor(data4p_high)), layout=layout4, theme="colorblind", vsize = 20, asize = 10, graph = "pcor")
 title(main = "GGM", font.main = 1, cex.main = 1.2, line = 4, outer=TRUE, adj = 0.5)
 
 ## Run CCD algorithm
@@ -290,7 +290,7 @@ true5p <- qgraph(t(B5), layout=layout5, labels = colnames(B5),
 title("True cyclic graph",  font.main = 1, cex.main = 1.2, line = 4, outer=TRUE, adj = 0.11)
 
 ## Estimate GGM
-ggm5p <- qgraph(cor(data5p), layout = layout5, theme="colorblind", vsize = 20, asize = 10)
+ggm5p <- qgraph(cor(data5p), layout = layout5, theme="colorblind", vsize = 20, asize = 10, graph = "pcor")
 title(main = "GGM", font.main = 1, cex.main = 1.2, line = 4, outer=TRUE, adj = 0.5)
 
 ## Run CCD algorithm
@@ -347,7 +347,7 @@ true5p_high <- qgraph(t(B5_high), layout=layout5, labels = colnames(B5_high),
 title("True cyclic graph",  font.main = 1, cex.main = 1.2, line = 4, outer=TRUE, adj = 0.11)
 
 ## Estimate GGM
-ggm5p_high <- qgraph(cor(data5p_high), layout = layout5, theme="colorblind", vsize = 20, asize = 10)
+ggm5p_high <- qgraph(cor(data5p_high), layout = layout5, theme="colorblind", vsize = 20, asize = 10, graph = "pcor")
 title(main = "GGM", font.main = 1, cex.main = 1.2, line = 4, outer=TRUE, adj = 0.5)
 
 ## Run CCD algorithm
@@ -405,7 +405,7 @@ true6p <- qgraph(t(B6), layout=layout6, labels = colnames(B6), theme="colorblind
 title("True cyclic graph",  font.main = 1, cex.main = 1.2, line = 4, outer=TRUE, adj = 0.11)
 
 ## Estimate GGM
-ggm6p <- qgraph(cor(data6p), layout = layout6, theme="colorblind", vsize = 20, asize = 10)
+ggm6p <- qgraph(cor(data6p), layout = layout6, theme="colorblind", vsize = 20, asize = 10, graph = "pcor")
 title(main = "GGM", font.main = 1, cex.main = 1.2, line = 4, outer=TRUE, adj = 0.5)
 
 ## Run CCD algorithm
@@ -457,7 +457,7 @@ true6p_high <- qgraph(t(B6_high), layout=layout6, labels = colnames(B6), theme="
 title("True cyclic graph",  font.main = 1, cex.main = 1.2, line = 4, outer=TRUE, adj = 0.11)
 
 ## Estimate GGM
-ggm6p_high <- qgraph(cor(data6p_high), layout = layout6, theme="colorblind", vsize = 20, asize = 10)
+ggm6p_high <- qgraph(cor(data6p_high), layout = layout6, theme="colorblind", vsize = 20, asize = 10, graph = "pcor")
 title(main = "GGM", font.main = 1, cex.main = 1.2, line = 4, outer=TRUE, adj = 0.5)
 
 ## Run CCD algorithm
@@ -476,7 +476,7 @@ load("../data/equiv6p_high.RData")
 
 ## Density comparison
 
-Below, we can see the overall density for each of the simulated models. @fig-9 (a) shows the density of the sparse models, and @fig-9 (b) shows the density of the dense models. Across conditions, the DCGs approximate the true density better than the GGMs (as the red line follows the yellow line more closely). GGMs (green line) almost always overestimate the density. In addition, it can be seen that DCGs more clearly outperform GGMs when the true causal model is sparse. This could be due to the fact that the causal discovery algorithm (CCD) also struggles to estimate, when the true model is dense.
+Below, we can see the overall density for each of the simulated models. @fig-9 (a) shows the density of the sparse models, and @fig-9 (b) shows the density of the dense models. Across conditions, the DCGs approximate the true density better than the GGMs (as the red line follows the yellow line more closely), except for the *5node-sparse* case. GGMs (green line) almost always overestimate the density. In addition, it can be seen that DCGs more clearly outperform GGMs when the true causal model is sparse. This could be due to the fact that the causal discovery algorithm (CCD) also struggles to estimate, when the true model is dense.
 
 ```{r}
 #| label: fig-9
@@ -530,7 +530,7 @@ ggarrange(low_densities, high_densities, ncol = 1, nrow = 2, common.legend = TRU
 
 ## Degree comparison
 
-@fig-10 below shows the degree centrality for each of the simulated models. Across conditions, the DCGs again approximate the true degree for all nodes more closely than the GGMs, except for the *4node-dense* case (see the top right graph in @fig-10). As previously mentioned, the GGMs always overestimate the density, which naturally leads to the higher degree for almost all the nodes in the models. The exceptional *4node-dense* case seems to be a difficult model for the CCD algorithm to estimate, as it is a rather small model with a high density including a cycle. As you can see in the corresponding PAG in @sec-densefour, CCD was not able to recover any directions, which subsequently resulted in a huge class of equivalent DCGs. Probably that is why the degrees are shown to deviate a lot, as there were numerous DCGs that were considered to compute the average degrees in this case.
+@fig-10 below shows the degree centrality for each of the simulated models. In general, the DCGs approximate the true degree for most of the nodes more closely than the GGMs, except for the *4node-dense* and *5node-sparse* cases (see the top right and middle left graph in @fig-10). As previously mentioned, the GGMs always overestimate the density, which naturally leads to the higher degree for almost all the nodes in the models. The exceptional *4node-dense* case seems to be a difficult model for the CCD algorithm to estimate, as it is a rather small model with a high density including a cycle. As you can see in the corresponding PAG in @sec-densefour, CCD was not able to recover any directions, which subsequently resulted in a huge class of equivalent DCGs. Probably that is why the degrees are shown to deviate a lot, as there were numerous DCGs that were considered to compute the average degrees in this case.
 
 ```{r}
 #| label: fig-10
